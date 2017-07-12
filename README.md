@@ -32,6 +32,15 @@ customer.lookupByEmail('foo@bar.com')
 ;
 ```
 As you can see, all resource function calls will return a `Promise` object (specifically a `bluebird` promise) via the [request-promise](https://github.com/request/request-promise) library.
+
+You can also make any number of "generic" API calls that may not be covered by this library, or if you're just feeling fancy :) This is the equivelant to calling `customer.lookupByEmail('foo@bar.com')` from above:
+```js
+const omedaApi = require('omeda-node')(/* options */);
+
+const endpoint = omedaApi.buildBrandEndpoint('/customer/email/foo@bar.com/*');
+omedaApi.request('GET', '/', endpoint).then(/* ... */);
+```
+
 ### Complete API Reference
 Coming soon...
 
