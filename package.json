@@ -1,0 +1,27 @@
+{
+  "name": "omeda-node",
+  "version": "0.0.1",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -R spec --recursive",
+    "test-with-coverage": "./node_modules/.bin/nyc --reporter=text npm run test",
+    "lint": "./node_modules/.bin/eslint \"src/**/*.js\"; exit 0"
+  },
+  "author": "Jacob Bare <jacob.bare@cygnus.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "chai-as-promised": "^7.1.1",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^3.4.2",
+    "nock": "^9.0.13",
+    "nyc": "^11.0.3"
+  },
+  "dependencies": {
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  }
+}
