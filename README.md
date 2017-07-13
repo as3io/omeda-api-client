@@ -112,7 +112,7 @@ brand.lookup().then().catch()
 ## Developing / Contributing
 - Clone this repository
 - Install dependencies using [Yarn](https://yarnpkg.com/en/)
-  - `cd omeda-node`
+  - `cd omeda-api-client`
   - `yarn install`
 ### Running tests
 - Execute `npm run test`

@@ -1,6 +1,6 @@
 {
   "name": "omeda-api-client",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Omeda API Client for NodeJS",
   "main": "src/index.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/as3io/omeda-node"
+    "url": "https://github.com/as3io/omeda-api-client"
   },
   "author": "Jacob Bare <jacob.bare@cygnus.com>",
   "license": "MIT",
