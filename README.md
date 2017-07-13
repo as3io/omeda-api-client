@@ -49,11 +49,50 @@ const omedaApi = require('omeda-node')(/* options */);
 const customer = omedaApi.resources.customer;
 ```
 
+**customer.lookup(customerId, [returnMerged=true])**
+
+Performs a [Comprehensive Customer Lookup](https://jira.omeda.com/wiki/en/Customer_Comprehensive_Lookup_Service).
+Will return the full details of the customer.
+By default, if the customer that was found was merged into another, it will return the merged version.
+```js
+customer.lookup(1013321055).then().catch()
+```
+
 **customer.lookupByEmail(email, [productId])**
 
 Performs a [Customer Lookup By Email](https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_Email). Can optionally limit the result to a specified product ID.
 ```js
 customer.lookupByEmail('foo@bar.com').then().catch()
+```
+
+**lookupByEncryptedId(encryptedId, [returnMerged = true])**
+
+Performs a [Customer Lookup by EncryptedCustomerId](https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_EncryptedCustomerId).
+By default, if the customer that was found was merged into another, it will return the merged version.
+```js
+customer.lookupByEncryptedId('1773F6238056C8U').then().catch()
+```
+
+**lookupByExternalId(namespace, externalId)**
+
+Performs a [Customer Lookup Service By External ID](https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_External_ID).
+```js
+customer.lookupByExternalId('some-namespace', 'some-external-id').then().catch()
+```
+
+**lookupById(customerId, [returnMerged = true])**
+
+Performs a [Customer Lookup by CustomerId]{@link https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_CustomerId}.
+By default, if the customer that was found was merged into another, it will return the merged version.
+```js
+customer.lookupById(1013321055).then().catch()
+```
+
+**save(payload)**
+
+aves (creates/updates) a customer and/or order payload via the [Save Customer and Order API](https://jira.omeda.com/wiki/en/Save_Customer_and_Order_API).
+```js
+customer.save({ payload }).then().catch()
 ```
 
 ### The Brand Resource

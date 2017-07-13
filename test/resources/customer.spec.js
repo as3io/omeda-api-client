@@ -15,6 +15,39 @@ const resource = clientFactory({
 }).resources.customer;
 
 describe('resources/customer', function() {
+  describe('#lookup()', function(){
+    it('should return a successful response', function() {
+      const customerId = '1234';
+      api.get(`${BASE_ENDPOINT}/brand/foo/customer/${customerId}/comp${SUFFIX}`).reply(200);
+      const promise = resource.lookup(customerId);
+      return expect(promise).to.be.fulfilled;
+    });
+  });
+  describe('#lookupByEncryptedId()', function(){
+    it('should return a successful response', function() {
+      const customerId = '5678';
+      api.get(`${BASE_ENDPOINT}/brand/foo/customer/${customerId}${SUFFIX}`).reply(200);
+      const promise = resource.lookupByEncryptedId(customerId);
+      return expect(promise).to.be.fulfilled;
+    });
+  });
+  describe('#lookupByExternalId()', function(){
+    it('should return a successful response', function() {
+      const namespace = 'foo';
+      const externalId = '1234';
+      api.get(`${BASE_ENDPOINT}/brand/foo/customer/${namespace}/externalcustomeridnamespace/${externalId}/externalcustomerid${SUFFIX}`).reply(200);
+      const promise = resource.lookupByExternalId(namespace, externalId);
+      return expect(promise).to.be.fulfilled;
+    });
+  });
+  describe('#lookupById()', function(){
+    it('should return a successful response', function() {
+      const customerId = '1234';
+      api.get(`${BASE_ENDPOINT}/brand/foo/customer/${customerId}${SUFFIX}`).reply(200);
+      const promise = resource.lookupById(customerId);
+      return expect(promise).to.be.fulfilled;
+    });
+  });
   describe('#lookupByEmail()', function(){
     it('should return a successful response', function() {
       const email = 'foo@bar.com';
@@ -26,6 +59,13 @@ describe('resources/customer', function() {
         expect(resource.lookupByEmail(email)).to.be.fulfilled,
         expect(resource.lookupByEmail(email, productId)).to.be.fulfilled,
       ]);
+    });
+  });
+  describe('#save()', function(){
+    it('should return a successful response', function() {
+      api.post(`${BASE_ENDPOINT}/brand/foo/storecustomerandorder${SUFFIX}`).reply(200);
+      const promise = resource.save({ foo: 'bar' });
+      return expect(promise).to.be.fulfilled;
     });
   });
 });
