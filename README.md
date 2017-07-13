@@ -1,10 +1,10 @@
 # Omeda API Client for NodeJS
 ## Installing
-`npm install omeda-node --save`
+`npm install omeda-api-client --save`
 ## Usage
 ### Create an API client instance
 ```js
-const omedaApi = require('omeda-node')({
+const omedaApi = require('omeda-api-client')({
   brandKey: 'yourbrand', // your Omeda brand/db name
   clientKey: 'client_yourclient', // your Omeda client id
   appId: '1d381ff5-ba0b-47ce-8730-ce91b05f7b54', // your API app-id to access the brand
@@ -14,7 +14,7 @@ const omedaApi = require('omeda-node')({
 ```
 You can also create multiple instances of the API client to connect to different brand databases...
 ```js
-const omedaFactory = require('omeda-node');
+const omedaFactory = require('omeda-api-client');
 
 const fooBrand = omedaFactory({ brandKey: 'foo' /* additional options */ });
 const barBrand = omedaFactory({ brandKey: 'bar' /* additional options */ });
@@ -23,7 +23,7 @@ const barBrand = omedaFactory({ brandKey: 'bar' /* additional options */ });
 Once you have a client instance, you can begin making API calls. Each API "category" is organized into corresponding resources. For instance, "customer" related APIs can be accessed via the `customer` resource; brand APIs can be accessed via the `brand` resource, etc.
 For example, to lookup a customer by email address, you would execute the following call:
 ```js
-const omedaApi = require('omeda-node')(/* options */);
+const omedaApi = require('omeda-api-client')(/* options */);
 const customer = omedaApi.resources.customer;
 
 customer.lookupByEmail('foo@bar.com')
@@ -35,7 +35,7 @@ All API resource functions will return a `Promise` (specifically a `bluebird` pr
 
 You can also make any number of "generic" API calls that may not be covered by this library, or if you're just feeling fancy :) This is the equivelant to calling `customer.lookupByEmail('foo@bar.com')` from above:
 ```js
-const omedaApi = require('omeda-node')(/* options */);
+const omedaApi = require('omeda-api-client')(/* options */);
 
 omedaApi.request('brand', 'GET', '/customer/email/foo@bar.com/*').then(/* ... */);
 ```
@@ -45,7 +45,7 @@ omedaApi.request('brand', 'GET', '/customer/email/foo@bar.com/*').then(/* ... */
 ### The Customer Resource
 Access the resource:
 ```js
-const omedaApi = require('omeda-node')(/* options */);
+const omedaApi = require('omeda-api-client')(/* options */);
 const customer = omedaApi.resources.customer;
 ```
 
@@ -98,7 +98,7 @@ customer.save({ payload }).then().catch()
 ### The Brand Resource
 Access the resource:
 ```js
-const omedaApi = require('omeda-node')(/* options */);
+const omedaApi = require('omeda-api-client')(/* options */);
 const brand = omedaApi.resources.brand;
 ```
 
