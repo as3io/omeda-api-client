@@ -41,7 +41,34 @@ omedaApi.request('brand', 'GET', '/customer/email/foo@bar.com/*').then(/* ... */
 ```
 
 ### Complete API Reference
-Coming soon...
+---
+### The Customer Resource
+Access the resource:
+```js
+const omedaApi = require('omeda-node')(/* options */);
+const customer = omedaApi.resources.customer;
+```
+
+**customer.lookupByEmail(email, [productId])**
+
+Performs a [Customer Lookup By Email](https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_Email). Can optionally limit the result to a specified product ID.
+```js
+customer.lookupByEmail('foo@bar.com').then().catch()
+```
+
+### The Brand Resource
+Access the resource:
+```js
+const omedaApi = require('omeda-node')(/* options */);
+const brand = omedaApi.resources.brand;
+```
+
+**brand.lookup()**
+
+Performs a [Brand Comprehensive Lookup](https://jira.omeda.com/wiki/en/Brand_Comprehensive_Lookup_Service).
+```js
+brand.lookup().then().catch()
+```
 
 ## Developing / Contributing
 - Clone this repository
