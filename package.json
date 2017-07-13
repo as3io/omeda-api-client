@@ -8,6 +8,10 @@
     "coverage": "./node_modules/.bin/nyc --reporter=text npm run test",
     "lint": "./node_modules/.bin/eslint \"src/**/*.js\"; exit 0"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/as3io/omeda-node"
+  },
   "author": "Jacob Bare <jacob.bare@cygnus.com>",
   "license": "MIT",
   "devDependencies": {
