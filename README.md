@@ -82,7 +82,7 @@ customer.lookupByExternalId('some-namespace', 'some-external-id').then().catch()
 
 **lookupById(customerId, [returnMerged = true])**
 
-Performs a [Customer Lookup by CustomerId]{@link https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_CustomerId}.
+Performs a [Customer Lookup by CustomerId](https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_CustomerId).
 By default, if the customer that was found was merged into another, it will return the merged version.
 ```js
 customer.lookupById(1013321055).then().catch()
@@ -90,7 +90,7 @@ customer.lookupById(1013321055).then().catch()
 
 **save(payload)**
 
-aves (creates/updates) a customer and/or order payload via the [Save Customer and Order API](https://jira.omeda.com/wiki/en/Save_Customer_and_Order_API).
+Saves (creates/updates) a customer and/or order via the [Save Customer and Order API](https://jira.omeda.com/wiki/en/Save_Customer_and_Order_API).
 ```js
 customer.save({ payload }).then().catch()
 ```
