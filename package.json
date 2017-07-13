@@ -5,11 +5,11 @@
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec --recursive",
-    "test-with-coverage": "./node_modules/.bin/nyc --reporter=text npm run test",
+    "coverage": "./node_modules/.bin/nyc --reporter=text npm run test",
     "lint": "./node_modules/.bin/eslint \"src/**/*.js\"; exit 0"
   },
   "author": "Jacob Bare <jacob.bare@cygnus.com>",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "chai": "^4.0.2",
     "chai-as-promised": "^7.1.1",

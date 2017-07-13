@@ -9,13 +9,12 @@ module.exports = {
    * @return {Promise}
    */
   lookupByEmail(emailAddress, productId) {
-    let path = `/customer/email/${emailAddress}`;
+    let endpoint = `/customer/email/${emailAddress}`;
     if (productId) {
-      path = `${path}/productid/${productId}${SUFFIX}`;
+      endpoint = `${endpoint}/productid/${productId}${SUFFIX}`;
     } else {
-      path = `${path}${SUFFIX}`;
+      endpoint = `${endpoint}${SUFFIX}`;
     }
-    const endpoint = this.client.buildBrandEndpoint(path);
-    return this.client.request('GET', endpoint);
+    return this.client.request('brand', 'GET', endpoint);
   },
 };

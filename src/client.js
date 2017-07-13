@@ -77,17 +77,23 @@ const proto = {
   },
 
   /**
-   * Sends a request to the Omeda API.
+   * Performs an Omeda API request.
    *
+   * @param {string} type The root API type, either `brand` or `client`.
+   * @param {string} method The request method, e.g. `GET` or `POST`.
+   * @param {string} endpoint The API resource endpoint, e.g. `/customer/...`.
+   * @param {*} body The request payload body.
+   * @param {string} [application/json] contentType
    * @return {Promise}
    */
-  request(method, endpoint, body, contentType = 'application/json') {
+  request(type, method, endpoint, body, contentType = 'application/json') {
     if (!this.hasValidOptions()) {
       return Promise.reject(new Error('The Omeda API optons are not valid. Unable to perform request.'));
     }
+    const path = (type === 'brand') ? this.buildBrandEndpoint(endpoint) : this.buildClientEndpoint(endpoint);
     const options = {
       method: method.toUpperCase(),
-      uri: utils.buildRequestUri(this.options.useStaging, endpoint),
+      uri: utils.buildRequestUri(this.options.useStaging, path),
       headers: utils.buildRequestHeaders(
         method,
         contentType,

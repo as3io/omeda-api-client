@@ -5,7 +5,6 @@ module.exports = {
    * @return {Promise}
    */
   lookup() {
-    const endpoint = this.client.buildBrandEndpoint('/comp/*');
-    return this.client.request('GET', endpoint);
+    return this.client.request('brand', 'GET', '/comp/*');
   },
 };

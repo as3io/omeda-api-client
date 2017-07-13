@@ -20,8 +20,8 @@ const fooBrand = omedaFactory({ brandKey: 'foo' /* additional options */ });
 const barBrand = omedaFactory({ brandKey: 'bar' /* additional options */ });
 ```
 ### Making API calls
-Once you have an API client instance established, you can begin making API calls. Each API "type" is organized into corresponding resources. For instance, "customer" related APIs can be accessed via the `customer` resource. Brand APIs can be accessed via `brand`, etc.
-For example, to lookup a customer via email address, you would execute the following call:
+Once you have a client instance, you can begin making API calls. Each API "category" is organized into corresponding resources. For instance, "customer" related APIs can be accessed via the `customer` resource; brand APIs can be accessed via the `brand` resource, etc.
+For example, to lookup a customer by email address, you would execute the following call:
 ```js
 const omedaApi = require('omeda-node')(/* options */);
 const customer = omedaApi.resources.customer;
@@ -31,14 +31,13 @@ customer.lookupByEmail('foo@bar.com')
   .catch(err => console.info('An error was found!', err))
 ;
 ```
-As you can see, all resource function calls will return a `Promise` object (specifically a `bluebird` promise) via the [request-promise](https://github.com/request/request-promise) library.
+All API resource functions will return a `Promise` (specifically a `bluebird` promise) via the [request-promise](https://github.com/request/request-promise) library.
 
 You can also make any number of "generic" API calls that may not be covered by this library, or if you're just feeling fancy :) This is the equivelant to calling `customer.lookupByEmail('foo@bar.com')` from above:
 ```js
 const omedaApi = require('omeda-node')(/* options */);
 
-const endpoint = omedaApi.buildBrandEndpoint('/customer/email/foo@bar.com/*');
-omedaApi.request('GET', '/', endpoint).then(/* ... */);
+omedaApi.request('brand', 'GET', '/customer/email/foo@bar.com/*').then(/* ... */);
 ```
 
 ### Complete API Reference
@@ -51,7 +50,7 @@ Coming soon...
   - `yarn install`
 ### Running tests
 - Execute `npm run test`
-- To see code coverage, run `npm run test-with-coverage`
+- To see code coverage, run `npm run coverage`
 ### Contributing
 - Ensure that both the `npm run lint` and `npm run test` commands are successful before PRing.
 - Preferably, code coverage should remain unchanged (or become better).

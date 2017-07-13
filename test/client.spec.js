@@ -76,21 +76,45 @@ describe('client', function() {
     });
   });
   describe('#request()', function() {
-    it('should return a successful response', function() {
-      api.get(`${BASE_ENDPOINT}/foo/bar`).reply(200);
+    it('should return a successful brand response', function() {
+      api.get(`${BASE_ENDPOINT}/brand/foo/endpoint`).reply(200);
       const client = clientFactory(fauxOptions);
-      const promise = client.request('GET', '/foo/bar');
+      const promise = client.request('brand', 'GET', '/endpoint');
       return expect(promise).to.be.fulfilled;
     });
-    it('should return a successful response with a body', function() {
-      api.post(`${BASE_ENDPOINT}/foo/bar`).reply(200);
+    it('should return a successful brand response with a body', function() {
+      api.post(`${BASE_ENDPOINT}/brand/foo/endpoint`).reply(200);
       const client = clientFactory(fauxOptions);
-      const promise = client.request('POST', '/foo/bar', {foo: 'bar'});
+      const promise = client.request('brand', 'POST', '/endpoint', {foo: 'bar'});
+      return expect(promise).to.be.fulfilled;
+    });
+    it('should return a successful brand response with a body of a different content type', function() {
+      api.post(`${BASE_ENDPOINT}/brand/foo/baz`).reply(200);
+      const client = clientFactory(fauxOptions);
+      const promise = client.request('brand', 'POST', '/baz', '<foo></foo>', 'text/xml');
+      return expect(promise).to.be.fulfilled;
+    });
+    it('should return a successful client response', function() {
+      api.get(`${BASE_ENDPOINT}/client/client_foo/endpoint`).reply(200);
+      const client = clientFactory(fauxOptions);
+      const promise = client.request('client', 'GET', '/endpoint');
+      return expect(promise).to.be.fulfilled;
+    });
+    it('should return a successful client response with a body', function() {
+      api.post(`${BASE_ENDPOINT}/client/client_foo/endpoint`).reply(200);
+      const client = clientFactory(fauxOptions);
+      const promise = client.request('client', 'POST', '/endpoint', {foo: 'bar'});
+      return expect(promise).to.be.fulfilled;
+    });
+    it('should return a successful client response with a body of a different content type', function() {
+      api.post(`${BASE_ENDPOINT}/client/client_foo/endpoint`).reply(200);
+      const client = clientFactory(fauxOptions);
+      const promise = client.request('client', 'POST', '/endpoint', '<foo></foo>', 'text/xml');
       return expect(promise).to.be.fulfilled;
     });
     it('should error when the config is invalid', function() {
       const client = clientFactory();
-      const promise = client.request('GET', '/foo');
+      const promise = client.request('brand', 'GET', '/endpoint');
       return expect(promise).to.be.rejectedWith(Error);
     });
   });
