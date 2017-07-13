@@ -1,7 +1,7 @@
 {
-  "name": "omeda-node",
+  "name": "omeda-api-client",
   "version": "1.0.0",
-  "description": "",
+  "description": "Omeda API Client for NodeJS",
   "main": "src/index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha -R spec --recursive",
