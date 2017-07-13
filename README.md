@@ -65,7 +65,7 @@ Performs a [Customer Lookup By Email](https://jira.omeda.com/wiki/en/Customer_Lo
 customer.lookupByEmail('foo@bar.com').then().catch()
 ```
 
-**lookupByEncryptedId(encryptedId, [returnMerged = true])**
+**customer.lookupByEncryptedId(encryptedId, [returnMerged = true])**
 
 Performs a [Customer Lookup by EncryptedCustomerId](https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_EncryptedCustomerId).
 By default, if the customer that was found was merged into another, it will return the merged version.
@@ -73,14 +73,14 @@ By default, if the customer that was found was merged into another, it will retu
 customer.lookupByEncryptedId('1773F6238056C8U').then().catch()
 ```
 
-**lookupByExternalId(namespace, externalId)**
+**customer.lookupByExternalId(namespace, externalId)**
 
 Performs a [Customer Lookup Service By External ID](https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_External_ID).
 ```js
 customer.lookupByExternalId('some-namespace', 'some-external-id').then().catch()
 ```
 
-**lookupById(customerId, [returnMerged = true])**
+**customer.lookupById(customerId, [returnMerged = true])**
 
 Performs a [Customer Lookup by CustomerId](https://jira.omeda.com/wiki/en/Customer_Lookup_Service_By_CustomerId).
 By default, if the customer that was found was merged into another, it will return the merged version.
@@ -88,7 +88,7 @@ By default, if the customer that was found was merged into another, it will retu
 customer.lookupById(1013321055).then().catch()
 ```
 
-**save(payload)**
+**customer.save(payload)**
 
 Saves (creates/updates) a customer and/or order via the [Save Customer and Order API](https://jira.omeda.com/wiki/en/Save_Customer_and_Order_API).
 ```js
